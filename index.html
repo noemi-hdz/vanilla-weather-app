@@ -10,43 +10,53 @@
       integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <h1>Austin</h1>
-          <ul>
-            <li>Monday 11:00</li>
-            <li>Clear</li>
-          </ul>
-          <div class="row">
+          <div class="overview">
+            <h1 id="city"></h1>
+            <ul>
+              <li>Last Updated: <span id="date"></span></li>
+              <li id="description"></li>
+            </ul>
+          </div>
+          <div class="row" style="display: flex">
             <div class="col-6">
-              <div class="d-flex weather-temperature">
+              <div class="d-flex weather-temperature" style="display: flex">
                 <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                  alt="Clear"
-                  id="icon"
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="Cloudy"
                   class="float-left"
+                  id="icon"
                 />
                 <div class="float-left">
                   <strong id="temperature"></strong>
-                  <span class="units"> °C</span>
+                  <span class="units">
+                    <a href="#" id="fahrenheit-link" class="active">°F</a
+                    ><strong> |</strong>
+                    <a href="#" id="celsius-link">°C</a>
+                  </span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: <span id="precipitation"></span> 10 %</li>
-                <li>Humidity: <span id="humidty"></span> 20 %</li>
-                <li>Wind: <span id="wind"></span> km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>
+                  Wind: <span id="wind"></span>
+                  km/h
+                </li>
               </ul>
             </div>
           </div>
+          <div class="weather-forecast" id="forecast"></div>
         </div>
-        <small
-          ><a
+        <small>
+          <a
             href="https://github.com/noemi-hdz/vanilla-weather-app"
             target="_blank"
             >Open-source</a
