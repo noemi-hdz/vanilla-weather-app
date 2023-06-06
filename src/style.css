@@ -44,9 +44,7 @@ li:first-letter {
 .overview {
   margin-bottom: 20px;
 }
-.weather-temperature {
-  margin-right: 80px;
-}
+
 .weather-temperature img {
   margin-right: 5px;
   height: 64px;
