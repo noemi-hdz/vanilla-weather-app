@@ -46,17 +46,17 @@ function displayForecast(response) {
           <img
             src=" https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
-            }.png"
+            }@2x.png"
             alt=""
             width="42"
           />
           <div class="weather-forecast-temperatures">
             <span class="weather-forecast-temperature-max">${Math.round(
               forecastDay.temp.max
-            )}</span>
+            )}˚</span>
             <span class="weather-forecast-temperature-min">${Math.round(
               forecastDay.temp.min
-            )}</span>
+            )}˚</span>
           </div>
         </div>
       `;
@@ -68,8 +68,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "2513f3c728b1b5ff4f4347e1a6af22b8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}`;
-  console.log(apiUrl);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -105,13 +104,6 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -131,8 +123,5 @@ form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Bastrop");
